@@ -8,10 +8,10 @@ def info():
 
 def checkgender(id):
     gender=id[1] #抓id的第()個的字元 利用中括號
-    if gender == 1:
+    if gender =='1':
         print("男生")
         return
-    if gender ==2:
+    if gender =='2':
         print("女生")
         return
 
