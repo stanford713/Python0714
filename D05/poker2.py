@@ -39,7 +39,7 @@ while True:
 #PC拿牌
 p2=poker.pop()
 sum2=getScore(p2)
-print('PC已拿:',p2,'總分:',sum)
+print('PC已拿:',p2,'總分:',sum2)
 print('剩餘:',poker)
 count_pc=0;
 while True:
