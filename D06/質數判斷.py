@@ -1,0 +1,13 @@
+def isPrime(n):
+    bool=True#假設是質數
+    for i in range(2,n//2+1):# range算2~n//2
+            if n%i==0:
+                bool=False
+                break
+    return bool
+if '__main__'==__name__:
+    for n in range(2,101):
+        if isPrime(n):
+            print(n)
+
+
