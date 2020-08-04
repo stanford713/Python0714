@@ -1,7 +1,3 @@
 
-a=10
-b=20
-if a>b:
-    print("a>b")
-else:
-    print("a<b")
+lise=[1,13,65,48,25]
+sort(lise)
