@@ -1,6 +1,10 @@
+import requests
+
 def gettwiilist():
-    file=open('../util/BWIBBU_d_ALL_20200804.csv')
-    rows=file.readlines()
+    #file=open('../util/BWIBBU_d_ALL_20200804.csv')
+    #rows=file.readlines()
+    url='https://www.twse.com.tw/exchangeReport/BWIBBU_d?response=csv&date=20200804&selectType=ALL'
+    rows=requests.get(url).text.split('\r\n')#雲端方法
     list=[]#用來存放整理好的資料
     #your code here
     for row in rows:
