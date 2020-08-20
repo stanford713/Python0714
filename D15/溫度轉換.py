@@ -2,12 +2,12 @@ import  tkinter
 import  tkinter.ttk as ttk
 
 def ctof():
-    c=int(entry1.get())
+    c=float(entry1.get())
     f=c*9/5+32
     f_value.set(f)
 
 def ftoc():
-    f = int(entry2.get())
+    f = float(entry2.get())
     c= (f-32)*5/9
     c_value.set(c)
 
@@ -18,6 +18,7 @@ win.title('溫度轉換')
 win.geometry('300x300')
 s = ttk.Style()
 s.configure('My.TButton', font=('Arial', 10))
+#設變數
 c_value=tkinter.StringVar()
 c_value.set(0)
 f_value=tkinter.StringVar()
