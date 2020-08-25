@@ -1,4 +1,5 @@
 import sqlite3
+import sys
 conn=sqlite3.connect('school.db')
 def menu():
     print('1.建立表單')
@@ -14,6 +15,8 @@ def menu():
         return
     else:
         choice(n)
+    print('按下Enter鍵繼續...')
+    sys.stdin.read(1)
     menu()
 
 
@@ -49,26 +52,31 @@ def insertRecord():
     elif R==2:
         menu()
     conn.commit()
-def selectAllRecord():
-    sql='SELECT id,name,age,sex,ts FROM student'
-    cursor=conn.cursor()
-    cursor.execute(sql)
-    rows=cursor.fetchall()
-    for row in rows:
-        for i in range(5):
-            print(row[i],end='\t')
-        print()
-
-def selectRecord():
-    name=input('請輸入要查詢的人名:')
-    sql = 'SELECT id,name,age,sex,ts FROM student WHERE name="%s"'%(name)
+def select(sql):
     cursor = conn.cursor()
+    cursor.execute('PRAGMA TABLE_INFO({})'.format('student'))
+    metainfo = cursor.fetchall()
+    names = [t[1] for t in metainfo]  # id,n1,n2...
+    for name in names:
+        print(name, end='\t')
+    print('\n----------------------------')
     cursor.execute(sql)
     rows = cursor.fetchall()
     for row in rows:
         for i in range(5):
             print(row[i], end='\t')
         print()
+
+def selectAllRecord():
+    sql='SELECT id,name,age,sex,ts FROM student'
+    select(sql)
+
+
+def selectRecord():
+    name=input('請輸入要查詢的人名:')
+    sql = 'SELECT id,name,age,sex,ts FROM student WHERE name="%s"'%(name)
+    select(sql)
+
 
 def updateRecord():
     id=int(input('請輸入要修改的ID號碼:'))
